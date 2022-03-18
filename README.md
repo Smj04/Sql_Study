@@ -24,3 +24,6 @@ grant connect, resource to hr;
 > 저장
 
 `commit;`
+
+> 원격 접속을 해제하는법
+exec dbms_xdb.setlistenerlocalaccess(false);
