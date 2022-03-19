@@ -21,7 +21,7 @@ alter user hr identified by 비번;
 
 grant connect, resource to hr;
 
-> 저장
+> 저장❕
 
 `commit;`
 
