@@ -25,6 +25,6 @@ grant connect, resource to hr;
 
 `commit;`
 
-> 원격 접속을 해제하는법
+> 원격 접속을 해제하는법, 외부에서 접근가능
 
 exec dbms_xdb.setlistenerlocalaccess(false);
