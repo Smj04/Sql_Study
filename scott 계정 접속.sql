@@ -84,3 +84,6 @@ select empno, ename, sal , 2*(sal+300) from emp; -- 우선순위에 따라 괄호부터 연�
 
 select empno, ename, sal , comm ,comm+300 from emp; -- 알 수 없는 값null
 -- comm+300에서 comm값이 NULL값이면 그 결과도 NULL이 된다.
+
+select ename AS name, sal, sal + 12 "Annual Salary"
+FROM emp; -- sal에 12를 더한 컬럼이름을 "Annual Salary"로 지정한다.
