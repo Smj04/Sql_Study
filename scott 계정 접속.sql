@@ -87,3 +87,27 @@ select empno, ename, sal , comm ,comm+300 from emp; -- 알 수 없는 값null
 
 select ename AS name, sal, sal + 12 "Annual Salary"
 FROM emp; -- sal에 12를 더한 컬럼이름을 "Annual Salary"로 지정한다.
+
+select ename 결과1, 'ABCde' 결과2, sal 결과3, 500 결과4 --뒤에 한글이 필드명이 된다
+from emp;
+
+select ename || ':' || empno || ':' || job "이름사원업무"
+from emp;
+
+select ename || ' is a ' || job As "Employee Details"
+from emp;
+
+select ename || ' : 1 Year Salary = ' || sal * 12 Monthly -- ||은 결과값과 글씨를 연결해주는 것이다
+from emp; -- sal*12는 월급 1년(12개월)을 곱하면 연봉이 된다.
+
+select distinct job 
+from emp;
+
+select All * from emp;
+select * from emp; -- All이 생략된 표현 
+select distinct job from emp; -- job컬럼을 가지고 중복 제거
+select distinct deptno, job from emp; -- deptno(부서번호)와 job컬럼의 값이 중복되지 않게 출력 (distinct명령어 : 분명한,뚜렷한)
+
+select ROWID, rownum, ename, sal
+from emp where rownum <= 3; -- Rownum이 3까지 출력 where 조건절
+
