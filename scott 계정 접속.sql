@@ -111,3 +111,30 @@ select distinct deptno, job from emp; -- deptno(부서번호)와 job컬럼의 값이 중복�
 select ROWID, rownum, ename, sal
 from emp where rownum <= 3; -- Rownum이 3까지 출력 where 조건절
 
+select empno, ename, job, sal
+from emp where job = 'MANAGER'; -- 시험문제 : emp테이블에서 담당업무가 manager인 empno, ename, job, sal 사원의 정보를 조회
+
+select empno, ename, job, sal from emp where job = 'Manager'; -- 실제 데이터는 모두 대문자로 저장되어 있다
+
+select empno, ename, job, sal from emp where sal >= 3000; -- sal이 3000이거나 큰값 셀 출력
+
+select empno, ename, job, sal, deptno from emp where  deptno != 30;
+select empno, ename, job, sal, deptno from emp where  deptno <> 30;
+select empno, ename, job, sal, deptno from emp where  deptno ^= 30; --위에 3개다 결과값이 동일하다
+
+select ename, job, sal, deptno from emp where sal BETWEEN 1300 AND 1700; --  sal(급여)가 1300  ~ 1700이 출력된다(between A and B 명령어)
+
+select empno, ename, job, sal, hiredate from emp where empno IN (7902, 7788, 7566); -- empno필드 7902, 7788, 7566인 셀 출력
+select empno, ename, job, sal, hiredate from emp where empno = 7902 OR empno = 7788 OR empno = 7566; -- 위와 동일한 코드 위코드가 가독성이 좋다
+
+select ename, sal, job from emp where ename LIKE '_A%';
+-- ename 값이 두번째 글자가 A인 모든 데이터를 출력                   _는 1개 %는 0개이상
+
+select ename, sal, job from emp where ename LIKE '%A%'; -- ename에 'A'문자가 포함되면 TRUE를 리턴한다 시험문제!!!!!!!!! #이 붙은 %는 데이터 %  ESCAPE whildcard문자
+
+select empno, ename, job, sal, comm, deptno from emp where comm = NULL; -- 결과가 없음. NULL의 결과는 NULL
+select empno, ename, job, sal, comm, deptno from emp where comm < NULL;
+select empno, ename, job, sal, comm, deptno from emp where comm ^= NULL;
+
+select empno, ename, job, sal, comm, deptno from emp where comm IS NULL; -- comm 에 있는 데이터가 NULL이면 TRUE값이 리턴
+
