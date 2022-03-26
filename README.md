@@ -1,6 +1,6 @@
 # Sql_Study
 
-> sql 접속방법
+> cmd에서 sql 접속방법
 
 conn `sys(유저)`혹은 `system(관리자)`/비번
 
