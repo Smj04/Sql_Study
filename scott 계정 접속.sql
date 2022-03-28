@@ -138,3 +138,18 @@ select empno, ename, job, sal, comm, deptno from emp where comm ^= NULL;
 
 select empno, ename, job, sal, comm, deptno from emp where comm IS NULL; -- comm 에 있는 데이터가 NULL이면 TRUE값이 리턴
 
+select empno, ename, job, sal, deptno from emp where sal>=2800 AND job ='MANAGER'; -- 데이터는 대소문자 구별한다!
+
+select empno, ename, job, sal, deptno from emp where sal>=2800 OR job ='MANAGER';
+
+select empno, ename, job, sal, deptno from emp where job NOT IN('MANAGER',' CLERK', 'ANALYST');
+
+select ename, sal, job from emp where sal NOT BETWEEN 1000 AND 3000;
+
+select * from emp where ename LIKE 'A%'; --A문자로 시작하는 이름을 출력.
+select * from emp where ename NOT LIKE 'A%'; -- A가 안들어가는 이름을 출력.
+
+select ename, sal, comm, deptno from emp where comm IS NOT NULL; -- 보너스(comm)이 NULL인 데이터를 출력
+
+select ename, sal, comm, deptno from emp where (NVL(comm, 0)=0); -- comm이 NULL이면 0값으로 변경하시오.
+
