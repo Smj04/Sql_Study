@@ -153,3 +153,11 @@ select ename, sal, comm, deptno from emp where comm IS NOT NULL; -- 보너스(comm)
 
 select ename, sal, comm, deptno from emp where (NVL(comm, 0)=0); -- comm이 NULL이면 0값으로 변경하시오.
 
+select empno, ename, job, sal from emp where sal > 1500 AND job = 'PRESIDENT' OR job = 'SALESMAN'; -- 급여가 1500이상이고 직업이 president거나 job이 salesman을 출력
+select empno, ename, job, sal from emp where sal > 1500 AND job IN( 'PRESIDENT' , 'SALESMAN'); -- 위와 결과가 동일하다 IN('');
+
+select empno, ename, job, sal, hiredate from emp order by hiredate; -- 입사일자를 오름 차순(과거날짜에서 현재날짜순으로)
+
+select empno, ename, job, sal, hiredate from emp order by hiredate DESC;
+
+select empno, ename, job, sal, deptno hiredate from emp order by deptno, sal DESC;
