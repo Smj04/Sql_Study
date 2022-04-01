@@ -162,3 +162,40 @@ select empno, ename, job, sal, hiredate from emp order by hiredate DESC;
 
 select empno, ename, job, sal, deptno, hiredate from emp order by deptno, sal DESC;
 
+select empno, ename, job, sal, deptno, hiredate from emp order by 4; -- 1:empno, 2:ename, 3:job ,4:sal 그래서 sal을 기준으로 오름차순이 된다.
+
+select empno, ename, job, deptno, sal, hiredate from emp order by 4,5 desc; -- 4번째 컬럼 deptno는 오름차순, 5번째 컬럼 sal은 내림차순
+
+select DISTINCT deptno, job from emp order by job;
+ -- 별칭으로 컬럼이름을 ANN_SAL을 지정하였음 이때 Ann_SAL은 sal*12한 값이 할당된다
+
+select DISTINCT deptno, job from emp order by job; -- job을 기준으로 중복제거(distinct)오름차순
+
+select empno, sal, sal*12 ANN_SAL from emp order by deptno; -- DISTINCT를 사용하지 않으면 emp테이블에 있는 모든 컬럼을 정렬 기준으로 사용할 수 있다
+
+-- 오류 발생! DISTINCT를 사용할 경우 없는 컬럼을 부를시 오류발생(sal은 select절에 없기 때문에) select DISTINCT job, sal+comm from emp order by sal; 
+
+select empno, sal, sal*12 ANN_SAL from emp order by 2;
+--4/22 수행예정
+
+--함수
+select empno, ename , LOWER(job), UPPER(job), INITCAP(job) from emp where deptno = 10;
+
+select empno, ename, job, 
+CONCAT(empno, ename) ename1, 
+CONCAT(empno, empno) e_empno,
+CONCAT(ename, job) e_job
+from emp where deptno = 10; -- 컬럼을 연결하는 함수 CONCAT()
+--CONCAT(ename, job)은 ename과 job을 연결해서 하나의 컬럼을 만든다.
+
+--시험문제 잘 나옴
+select empno, ename, job, sal, deptno from emp where SUBSTR(ename, 1, 1) > 'K' AND SUBSTR(ename, 1, 1) < 'Y';  --SUBSTR(ename)ename값에서 첫번째 문자 한개를 반환한다
+
+select empno, ename, LENGTH(ename), sal,LENGTH(sal) from emp; --인덱스 번호대로x 그냥 번호대로
+
+select ename, 
+            INSTR(ename, 'L') e_null, 
+            INSTR(ename, 'L', 1,1) e_11,
+            INSTR(ename, 'L', 1,2) e_12,
+            INSTR(ename, 'L', 4,1) e_41
+            from emp order by ename; --L자를 처음부터 찾아서 각각의 별칭컬럼에 할당한다
