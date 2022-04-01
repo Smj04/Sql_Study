@@ -199,3 +199,20 @@ select ename,
             INSTR(ename, 'L', 1,2) e_12,
             INSTR(ename, 'L', 4,1) e_41
             from emp order by ename; --L자를 처음부터 찾아서 각각의 별칭컬럼에 할당한다
+            
+            --substr(ename, 1, 3); --ename의 문자열 데이터에서 첫번째 위치부터 3개의 문자열을 반호나
+            
+--59page
+select ename, LPAD(ename , 15,'*'), sal, LPAD(sal, 10, '$') from emp where deptno = 10; -- LPAD()왼쪽에 숫자자리만큼 특수문자로 채운다
+select ename, RPAD(ename , 15,'*'), sal, RPAD(sal, 10, '$') from emp where deptno = 10; -- RPAD() 오른쪽에 숫자자리만큼 문자로 채운다
+
+
+select ename, job, LTRIM(job, 'A'), sal, LTRIM(sal, 1) from emp where deptno = 20; -- LTRIM()값의 왼쪽 숫자자리만큼을 제거.
+--LITRIM(job, 'A')에서 job데이터가 맨 왼쪽에서 'A'문자가 있으면 삭제
+--LITRIM(sal, 1)에서 급여 데이터가 맨 왼쪽에 1의 숫자가 있으면 삭제되고, 연속해서 있을 경우에도 계속삭제한다.
+
+select ename, job, RTRIM(job, 'T'), sal, RTRIM(sal, 0) from emp where deptno = 10; -- RTRIM()은 오른쪽 숫자자리만큼을 제거
+
+--REPLACE() vs TRANSLATE() REPLACE()는 문자열 전체값비교, TRANSLATE()는 문자값 각각 하나씩 비교
+select ename, REPLACE(ename, 'SC', '*?') AS 변경결과 from emp where deptno = 20; -- REPLACE(대체할 컬럼이름, 대체할문자선택, '대체할 값바꿈') AS 별칭컬럼에 결과값할당
+select ename, TRANSLATE(ename, 'SC','*?') 변경결과2 from emp where deptno = 20; -- TRANSLATE()     TRANSLATE('sc','*?'); s와 c 따로 각각 하나씩 비교해서 모두가 같은 경우에만 변경  --> s문자는 *로 변경하고 c문자는 ?로 변경한다
