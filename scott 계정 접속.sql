@@ -160,4 +160,5 @@ select empno, ename, job, sal, hiredate from emp order by hiredate; -- 입사일자�
 
 select empno, ename, job, sal, hiredate from emp order by hiredate DESC;
 
-select empno, ename, job, sal, deptno hiredate from emp order by deptno, sal DESC;
+select empno, ename, job, sal, deptno, hiredate from emp order by deptno, sal DESC;
+
