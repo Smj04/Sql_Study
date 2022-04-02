@@ -1,4 +1,5 @@
 # Sql_Study
+`tool : sql developer`
 
 > cmd에서 sql 접속방법
 
