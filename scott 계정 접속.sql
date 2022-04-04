@@ -216,3 +216,21 @@ select ename, job, RTRIM(job, 'T'), sal, RTRIM(sal, 0) from emp where deptno = 1
 --REPLACE() vs TRANSLATE() REPLACE()는 문자열 전체값비교, TRANSLATE()는 문자값 각각 하나씩 비교
 select ename, REPLACE(ename, 'SC', '*?') AS 변경결과 from emp where deptno = 20; -- REPLACE(대체할 컬럼이름, 대체할문자선택, '대체할 값바꿈') AS 별칭컬럼에 결과값할당
 select ename, TRANSLATE(ename, 'SC','*?') 변경결과2 from emp where deptno = 20; -- TRANSLATE()     TRANSLATE('sc','*?'); s와 c 따로 각각 하나씩 비교해서 모두가 같은 경우에만 변경  --> s문자는 *로 변경하고 c문자는 ?로 변경한다
+
+
+--65P
+select ename, hiredate, hiredate+3, hiredate+5/24 from emp where deptno = 30;
+alter SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD-HH24:MI:SS'; -- 날짜형식을 변경
+
+----66P 시험문제 예제
+--SELECT ename, hiredate, sysdate, sysdate - hiredate "Total Days", 
+--    TRUNC((sysdate-hiredate)/7, 0) Weeks,--소수점버림
+--    ROUND(MOD(sysdate-hiredate), 7,0) Days
+--FROM emp order by sysdate-hiredate;
+
+--오늘 날짜 출력하기(일자,월,년도) EXTRACT(? from sysdate)함수  숫자를 반환함
+select EXTRACT (day from sysdate) 일자,
+        EXTRACT (month from sysdate) 월,
+        EXTRACT (year from sysdate) 년도
+from DUAL;
+
